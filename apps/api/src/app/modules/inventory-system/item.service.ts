@@ -2,7 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Item } from './entities/item.entity';
-import { CreateInventorySystemDTO, UpdateInventorySystemDTO } from './dtos/item.dto';
+import { CreateItemDTO, UpdateItemDTO } from './dtos/item.dto';
 import { ItemType } from '../type/entities/item-type.entity';
 // import { ItemLocation } from '../location/entities/item-location.entity';
 
@@ -14,12 +14,12 @@ export class InventorySystemService {
 		@InjectRepository(ItemType) private typeRepository: Repository<ItemType>
 	) { }
 
-	async create(createInventorySystemDTO: CreateInventorySystemDTO) {
+	async create(createInventorySystemDTO: CreateItemDTO) {
 		const inventorySystem = this.repository.create(createInventorySystemDTO);
 		return await this.repository.save(inventorySystem);
 	}
 
-	async update(id: number, updateInventorySystemDTO: UpdateInventorySystemDTO, typeId: number) {
+	async update(id: number, updateInventorySystemDTO: UpdateItemDTO, typeId: number) {
 		const inventorySystem = await this.repository.findOneBy({ id })
 		if (!inventorySystem) throw new NotFoundException()
 		const type = await this.typeRepository.findOneBy({ id: typeId });

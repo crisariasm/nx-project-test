@@ -3,10 +3,10 @@ import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { InventorySystemModule } from './modules/inventory-system/inventory-system.module';
+import { InventorySystemModule } from './modules/inventory-system/item.module';
 import { config }  from 'dataSource'
-import { LocationModule } from './modules/location/location.module';
-import { TypeModule } from './modules/type/type.module';
+import { LocationModule } from './modules/location/item-location.module';
+import { TypeModule } from './modules/type/item-type.module';
 
 @Module({
   imports: [ConfigModule, InventorySystemModule, LocationModule, TypeModule,

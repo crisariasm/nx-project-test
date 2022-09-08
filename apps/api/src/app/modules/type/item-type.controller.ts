@@ -1,7 +1,7 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
 import { ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { CreateTypeDTO, TypeDTO, UpdateTypeDTO } from './dtos/item-type.dto';
-import { TypeService } from './type.service';
+import { TypeService } from './item-type.service';
 
 @ApiTags('Type')
 @Controller('type')

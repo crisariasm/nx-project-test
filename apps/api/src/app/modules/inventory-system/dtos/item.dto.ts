@@ -4,7 +4,7 @@ import { LocationDTO } from "../../location/dtos/item-location.dto";
 import { TypeDTO } from "../../type/dtos/item-type.dto";
 
 
-export class InventorySystemDTO {
+export class ItemDTO {
 	
 	@ApiProperty()
 	id : number;
@@ -38,7 +38,7 @@ export class InventorySystemDTO {
 	type: TypeDTO;
 }
 
-export class CreateInventorySystemDTO {
+export class CreateItemDTO {
 
 	@ApiProperty()
 	@IsString()
@@ -69,7 +69,7 @@ export class CreateInventorySystemDTO {
 	date: Date;
 }
 
-export class UpdateInventorySystemDTO {
+export class UpdateItemDTO {
 
 	@ApiProperty()
 	@IsNumber()
@@ -105,8 +105,8 @@ export class UpdateInventorySystemDTO {
 
 	@ApiProperty()
 	@IsNumber()
-	typeId : number;
+	itemTypeId : number;
 
 	@ApiProperty()
-	locationIds : [number];
+	itemLocationIds : [number];
 }
