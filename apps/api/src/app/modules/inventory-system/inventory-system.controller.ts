@@ -21,12 +21,13 @@ export class InventorySystemController {
 		type: InventorySystemDTO,
 	})
 	@ApiOperation({ summary: 'Update inventory system' })
-	@Patch(':id')
+	@Patch(':id/:typeId')
 	update(
 		@Param('id') id: number,
+		@Param('typeId') typeId: number,
 		@Body() updateInventorySystemDTO: UpdateInventorySystemDTO
 	) {
-		return this.inventorySystemService.update(id, updateInventorySystemDTO);
+		return this.inventorySystemService.update(id, updateInventorySystemDTO, typeId);
 	}
 
 	@ApiOkResponse({

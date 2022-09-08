@@ -70,7 +70,7 @@ export class UpdateTypeDTO {
 
 	@ApiProperty()
 	@IsNumber()
-	id : number;
+	typeId : number;
 	
 	@ApiProperty()
 	@IsBoolean()

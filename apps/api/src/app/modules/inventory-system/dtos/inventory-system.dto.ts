@@ -102,4 +102,11 @@ export class UpdateInventorySystemDTO {
 	@ApiProperty()
 	@IsDateString()
 	date: Date;
+
+	@ApiProperty()
+	@IsNumber()
+	typeId : number;
+
+	@ApiProperty()
+	locationIds : [number];
 }
