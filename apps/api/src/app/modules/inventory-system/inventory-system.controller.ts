@@ -1,6 +1,6 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
 import { ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
-import { CreateInventorySystemDTO, InventorySystemDTO, UpdateInventorySystemDTO } from './dtos/inventory-system.dto';
+import { CreateInventorySystemDTO, InventorySystemDTO, UpdateInventorySystemDTO } from './dtos/item.dto';
 import { InventorySystemService } from './inventory-system.service';
 
 @ApiTags('Inventory System')

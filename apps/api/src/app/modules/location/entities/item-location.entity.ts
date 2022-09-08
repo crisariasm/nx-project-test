@@ -1,9 +1,9 @@
 import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { InventorySystem } from '../../inventory-system/entities/inventory-system.entity';
+import { Item } from '../../inventory-system/entities/item.entity';
 
 
 @Entity()
-export class Location {
+export class ItemLocation {
 
 	@PrimaryGeneratedColumn()
 	id: number;
@@ -20,6 +20,6 @@ export class Location {
 	@Column()
 	postalCode: number;
 
-	@ManyToMany(() => InventorySystem, (inventorySystem) => inventorySystem.locations)
-	inventorySystems: InventorySystem[];
+	@ManyToMany(() => Item, (inventorySystem) => inventorySystem.locations)
+	inventorySystems: Item[];
 }

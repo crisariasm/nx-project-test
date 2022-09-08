@@ -1,17 +1,17 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
-import { InventorySystem } from './entities/inventory-system.entity';
-import { CreateInventorySystemDTO, UpdateInventorySystemDTO } from './dtos/inventory-system.dto';
-// import { Location } from '../location/entities/location.entity';
-import { Type } from '../type/entities/type.entity';
+import { Item } from './entities/item.entity';
+import { CreateInventorySystemDTO, UpdateInventorySystemDTO } from './dtos/item.dto';
+import { ItemType } from '../type/entities/item-type.entity';
+// import { ItemLocation } from '../location/entities/item-location.entity';
 
 @Injectable()
 export class InventorySystemService {
 	constructor(
-		@InjectRepository(InventorySystem) private repository: Repository<InventorySystem>,
-		// @InjectRepository(Location) private locationRepository: Repository<Location>,
-		@InjectRepository(Type) private typeRepository: Repository<Type>
+		@InjectRepository(Item) private repository: Repository<Item>,
+		// @InjectRepository(ItemLocation) private locationRepository: Repository<ItemLocation>,
+		@InjectRepository(ItemType) private typeRepository: Repository<ItemType>
 	) { }
 
 	async create(createInventorySystemDTO: CreateInventorySystemDTO) {

@@ -1,9 +1,9 @@
 import { Column, Entity, ManyToOne, ManyToMany, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, JoinTable, JoinColumn } from 'typeorm';
-import { Location } from '../../location/entities/location.entity';
-import { Type } from '../../type/entities/type.entity';
+import { ItemLocation } from '../../location/entities/item-location.entity';
+import { ItemType } from '../../type/entities/item-type.entity';
 
-@Entity({ name: 'inventory_system' })
-export class InventorySystem {
+@Entity()
+export class Item {
 
 	@PrimaryGeneratedColumn()
 	id : number;
@@ -32,7 +32,7 @@ export class InventorySystem {
 	@UpdateDateColumn()
 	updateAt : Date;
 
-	@ManyToMany(() => Location, (location) => location.inventorySystems)
+	@ManyToMany(() => ItemLocation, (location) => location.inventorySystems)
 	@JoinTable({
 		name: 'inventory_system_location',
 		joinColumn: {
@@ -42,9 +42,9 @@ export class InventorySystem {
 			name: 'location_id',
 		}
 	})
-	locations: Location[];
+	locations: ItemLocation[];
 
-	@ManyToOne(() => Type, (type) => type.inventorySystems)
+	@ManyToOne(() => ItemType, (type) => type.inventorySystems)
 	@JoinColumn({ name: 'type_id' })
-	type: Type;
+	type: ItemType;
 }

@@ -1,7 +1,7 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { IsDateString, IsNumber, IsString } from "class-validator";
-import { LocationDTO } from "../../location/dtos/location.dto";
-import { TypeDTO } from "../../type/dtos/type.dto";
+import { LocationDTO } from "../../location/dtos/item-location.dto";
+import { TypeDTO } from "../../type/dtos/item-type.dto";
 
 
 export class InventorySystemDTO {

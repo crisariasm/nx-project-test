@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common';
 import { InventorySystemService } from './inventory-system.service';
 import { InventorySystemController } from './inventory-system.controller';
-import { InventorySystem } from './entities/inventory-system.entity';
+import { Item } from './entities/item.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Type } from '../type/entities/type.entity';
+import { ItemType } from '../type/entities/item-type.entity';
 // import { Location } from '../location/entities/location.entity';
 @Module({
-  imports: [TypeOrmModule.forFeature([InventorySystem, Type])], 
+  imports: [TypeOrmModule.forFeature([Item, ItemType])], 
   providers: [InventorySystemService],
   controllers: [InventorySystemController]
 })

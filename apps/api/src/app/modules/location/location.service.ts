@@ -1,12 +1,12 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Location } from '../location/entities/location.entity';
-import { CreateLocationDTO, UpdateLocationDTO } from './dtos/location.dto';
+import { ItemLocation } from './entities/item-location.entity';
+import { CreateLocationDTO, UpdateLocationDTO } from './dtos/item-location.dto';
 
 @Injectable()
 export class LocationService {
-	constructor(@InjectRepository(Location) private repository: Repository<Location>) { }
+	constructor(@InjectRepository(ItemLocation) private repository: Repository<ItemLocation>) { }
 
 	async create(createLocationDTO: CreateLocationDTO) {
 		const location = this.repository.create(createLocationDTO);

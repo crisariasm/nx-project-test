@@ -2,10 +2,10 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { LocationController } from './location.controller';
 import { LocationService } from './location.service';
-import { Location } from '../location/entities/location.entity';
+import { ItemLocation } from './entities/item-location.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Location])],
+  imports: [TypeOrmModule.forFeature([ItemLocation])],
   controllers: [LocationController],
   providers: [LocationService]
 })

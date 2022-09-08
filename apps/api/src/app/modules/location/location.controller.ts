@@ -1,6 +1,6 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
 import { ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
-import { CreateLocationDTO, LocationDTO, UpdateLocationDTO } from './dtos/location.dto';
+import { CreateLocationDTO, LocationDTO, UpdateLocationDTO } from './dtos/item-location.dto';
 import { LocationService } from './location.service';
 
 @ApiTags('Location')
