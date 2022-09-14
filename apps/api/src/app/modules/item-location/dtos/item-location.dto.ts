@@ -1,7 +1,7 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { IsNumber, IsString } from "class-validator";
 
-export class LocationDTO {
+export class ItemLocationDTO {
 
 	@ApiProperty()
 	id: number;
@@ -19,7 +19,7 @@ export class LocationDTO {
 	postalCode: number;
 }
 
-export class CreateLocationDTO {
+export class CreateItemLocationDTO {
 
 	@ApiProperty()
 	@IsString()
@@ -38,7 +38,7 @@ export class CreateLocationDTO {
 	postalCode: number;
 }
 
-export class UpdateLocationDTO {
+export class UpdateItemLocationDTO {
 
 	@ApiProperty()
 	@IsNumber()

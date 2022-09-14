@@ -1,9 +1,8 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { InventorySystem } from '../../inventory-system/entities/inventory-system.entity';
-
+import { Item } from '../../item/entities/item.entity';
 
 @Entity()
-export class Type {
+export class ItemType {
 
 	@PrimaryGeneratedColumn()
 	id: number;
@@ -29,6 +28,6 @@ export class Type {
 	@Column()
 	stock: boolean;
 
-	@OneToMany(() => InventorySystem, (inventorySystem) => inventorySystem.type)
-	inventorySystems: InventorySystem[];
+	@OneToMany(() => Item, (inventorySystem) => inventorySystem.itemType)
+	inventorySystems: Item[];
 }

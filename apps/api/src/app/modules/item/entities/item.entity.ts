@@ -1,15 +1,16 @@
 import { Column, Entity, ManyToOne, ManyToMany, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, JoinTable, JoinColumn } from 'typeorm';
-import { Location } from '../../location/entities/location.entity';
-import { Type } from '../../type/entities/type.entity';
+import { ItemLocation } from '../../item-location/entities/item-location.entity';
+import { ItemType } from '../../item-type/entities/item-type.entity';
 
-@Entity({ name: 'inventory_system' })
-export class InventorySystem {
+
+@Entity()
+export class Item {
 
 	@PrimaryGeneratedColumn()
 	id : number;
 
-	@Column()
-	codigo: string;
+	@Column({ nullable: true })
+	code: string;
 
 	@Column()
 	name : string;
@@ -21,10 +22,10 @@ export class InventorySystem {
 	description : string;
 
 	@Column()
-	cantidad : number;
+	amount : number;
 
 	@Column()
-	valor : number;
+	price : number;
 
 	@CreateDateColumn()
 	date: Date;
@@ -32,7 +33,7 @@ export class InventorySystem {
 	@UpdateDateColumn()
 	updateAt : Date;
 
-	@ManyToMany(() => Location, (location) => location.inventorySystems)
+	@ManyToMany(() => ItemLocation, (location) => location.inventorySystems)
 	@JoinTable({
 		name: 'inventory_system_location',
 		joinColumn: {
@@ -42,9 +43,9 @@ export class InventorySystem {
 			name: 'location_id',
 		}
 	})
-	locations: Location[];
+	itemLocations: ItemLocation[];
 
-	@ManyToOne(() => Type, (type) => type.inventorySystems)
+	@ManyToOne(() => ItemType, (type) => type.inventorySystems)
 	@JoinColumn({ name: 'type_id' })
-	type: Type;
+	itemType: ItemType;
 }

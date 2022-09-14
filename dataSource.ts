@@ -10,7 +10,9 @@ export const config: DataSourceOptions = {
 
 const source = new DataSource({
   ...config,
-  entities: ["apps/api/src/app/modules/inventory-system/entities/**/*.ts"],
+  entities: [
+    "apps/api/src/app/modules/**/*.entity.ts"
+  ],
   migrations: ["./migrations/*.ts"],
 });
 
