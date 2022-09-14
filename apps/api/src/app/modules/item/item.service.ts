@@ -6,8 +6,6 @@ import { CreateItemDTO, UpdateItemDTO } from './dtos/item.dto';
 import { ItemType } from '../item-type/entities/item-type.entity';
 import { ItemLocation } from '../item-location/entities/item-location.entity';
 
-// import { ItemLocation } from '../location/entities/item-location.entity';
-
 @Injectable()
 export class ItemService {
 	constructor(
@@ -45,12 +43,4 @@ export class ItemService {
 	async findAll() {
 		return await this.repository.find();
 	}
-
-	// async relationLocation(id: number, locationIds: number[]) {
-	// 	const inventorySystem = await this.repository.findOneBy({ id })
-	// 	if (!inventorySystem) throw new NotFoundException()
-	// 	const location = await this.locationRepository.findOneBy({ id: locationIds });
-	// 	inventorySystem.locations = location;
-	// 	return await this.repository.save(inventorySystem);
-	// }
 }

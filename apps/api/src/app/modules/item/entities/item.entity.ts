@@ -37,7 +37,7 @@ export class Item {
 	@JoinTable({
 		name: 'inventory_system_location',
 		joinColumn: {
-			name: 'location_id',
+			name: 'item_id',
 		},
 		inverseJoinColumn: {
 			name: 'location_id',
