@@ -1,36 +1,36 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
 import { ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
-import { CreateTypeDTO, TypeDTO, UpdateTypeDTO } from './dtos/type.dto';
-import { TypeService } from './type.service';
+import { CreateItemTypeDTO, ItemTypeDTO, UpdateItemTypeDTO } from './dtos/item-type.dto';
+import { ItemTypeService } from './item-type.service';
 
-@ApiTags('Type')
-@Controller('type')
-export class TypeController {
-	constructor(private readonly typeService: TypeService) { }
+@ApiTags('Item Type')
+@Controller('item-type')
+export class ItemTypeController {
+	constructor(private readonly typeService: ItemTypeService) { }
 
 	@ApiOkResponse({
-		type: TypeDTO
+		type: ItemTypeDTO
 	})
 	@ApiOperation({ summary: 'create type' })
 	@Post()
-	create(@Body() createTypeDTO: CreateTypeDTO) {
+	create(@Body() createTypeDTO: CreateItemTypeDTO) {
 		return this.typeService.create(createTypeDTO);
 	}
 
 	@ApiOkResponse({
-		type: TypeDTO
+		type: ItemTypeDTO
 	})
 	@ApiOperation({ summary: 'Update type' })
 	@Patch(':id')
 	update(
 		@Param('id') id: number,
-		@Body() updateTypeDTO: UpdateTypeDTO
+		@Body() updateTypeDTO: UpdateItemTypeDTO
 	) {
 		return this.typeService.update(id, updateTypeDTO);
 	}
 
 	@ApiOkResponse({
-		type: TypeDTO
+		type: ItemTypeDTO
 	})
 	@ApiOperation({ summary: 'Delete type' })
 	@Delete(':id')
@@ -39,7 +39,7 @@ export class TypeController {
 	}
 	
 	@ApiOkResponse({
-		type: TypeDTO
+		type: ItemTypeDTO
 	})
 	@ApiOperation({ summary: 'Get type by id' })
 	@Get(':id')
@@ -48,7 +48,7 @@ export class TypeController {
 	}
 
 	@ApiOkResponse({
-		type: TypeDTO
+		type: ItemTypeDTO
 	})
 	@ApiOperation({ summary: 'Get all types' })
 	@Get()

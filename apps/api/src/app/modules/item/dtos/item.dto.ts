@@ -1,16 +1,15 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { IsDateString, IsNumber, IsString } from "class-validator";
-import { LocationDTO } from "../../location/dtos/location.dto";
-import { TypeDTO } from "../../type/dtos/type.dto";
+import { ItemLocationDTO } from "../../item-location/dtos/item-location.dto";
+import { ItemTypeDTO } from "../../item-type/dtos/item-type.dto";
 
-
-export class InventorySystemDTO {
+export class ItemDTO {
 	
 	@ApiProperty()
 	id : number;
 
 	@ApiProperty()
-	codigo: string;
+	code: string;
 
 	@ApiProperty()
 	name : string;
@@ -22,27 +21,27 @@ export class InventorySystemDTO {
 	description : string;
 
 	@ApiProperty()
-	cantidad : number;
+	amount : number;
 
 	@ApiProperty()
-	valor : number;
+	price : number;
 
 	@ApiProperty()
 	date: Date;
 
 	//RELATIONS
-	@ApiProperty({ type: [LocationDTO] })
-	locations: LocationDTO[];
+	@ApiProperty({ type: [ItemLocationDTO] })
+	locations: ItemLocationDTO[];
 
-	@ApiProperty({ type: TypeDTO })
-	type: TypeDTO;
+	@ApiProperty({ type: ItemTypeDTO })
+	type: ItemTypeDTO;
 }
 
-export class CreateInventorySystemDTO {
+export class CreateItemDTO {
 
 	@ApiProperty()
 	@IsString()
-	codigo: string;
+	code: string;
 
 	@ApiProperty()
 	@IsString()
@@ -58,18 +57,18 @@ export class CreateInventorySystemDTO {
 
 	@ApiProperty()
 	@IsNumber()
-	cantidad : number;
+	amount : number;
 
 	@ApiProperty()
 	@IsNumber()
-	valor : number;
+	price : number;
 
 	@ApiProperty()
 	@IsDateString()
 	date: Date;
 }
 
-export class UpdateInventorySystemDTO {
+export class UpdateItemDTO {
 
 	@ApiProperty()
 	@IsNumber()
@@ -77,7 +76,7 @@ export class UpdateInventorySystemDTO {
 
 	@ApiProperty()
 	@IsString()
-	codigo: string;
+	code: string;
 
 	@ApiProperty()
 	@IsString()
@@ -93,13 +92,21 @@ export class UpdateInventorySystemDTO {
 
 	@ApiProperty()
 	@IsNumber()
-	cantidad : number;
+	amount : number;
 
 	@ApiProperty()
 	@IsNumber()
-	valor : number;
+	price : number;
 
 	@ApiProperty()
 	@IsDateString()
 	date: Date;
+
+	@ApiProperty()
+	@IsNumber()
+	itemTypeId : number;
+
+	@ApiProperty()
+	@IsNumber({},{each: true})
+	itemLocationIds : [number];
 }
