@@ -1,36 +1,36 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
 import { ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
-import { CreateLocationDTO, LocationDTO, UpdateLocationDTO } from './dtos/item-location.dto';
-import { LocationService } from './item-location.service';
+import { CreateItemLocationDTO, ItemLocationDTO, UpdateItemLocationDTO } from './dtos/item-location.dto';
+import { ItemLocationService } from './item-location.service';
 
-@ApiTags('Location')
-@Controller('location')
-export class LocationController {
-	constructor(private readonly locationService: LocationService) { }
+@ApiTags('Item Location')
+@Controller('item-location')
+export class ItemLocationController {
+	constructor(private readonly locationService: ItemLocationService) { }
 
 	@ApiOkResponse({
-		type: LocationDTO
+		type: ItemLocationDTO
 	})
 	@ApiOperation({ summary: 'create location' })
 	@Post()
-	create(@Body() createLocationDTO: CreateLocationDTO) {
+	create(@Body() createLocationDTO: CreateItemLocationDTO) {
 		return this.locationService.create(createLocationDTO);
 	}
 
 	@ApiOkResponse({
-		type: LocationDTO
+		type: ItemLocationDTO
 	})
 	@ApiOperation({ summary: 'Update location' })
 	@Patch(':id')
 	update(
 		@Param('id') id: number,
-		@Body() updateLocationDTO: UpdateLocationDTO
+		@Body() updateLocationDTO: UpdateItemLocationDTO
 	) {
 		return this.locationService.update(id, updateLocationDTO);
 	}
 
 	@ApiOkResponse({
-		type: LocationDTO
+		type: ItemLocationDTO
 	})
 	@ApiOperation({ summary: 'Delete location' })
 	@Delete(':id')
@@ -39,7 +39,7 @@ export class LocationController {
 	}
 	
 	@ApiOkResponse({
-		type: LocationDTO
+		type: ItemLocationDTO
 	})
 	@ApiOperation({ summary: 'Get location by id' })
 	@Get(':id')
@@ -48,7 +48,7 @@ export class LocationController {
 	}
 
 	@ApiOkResponse({
-		type: LocationDTO
+		type: ItemLocationDTO
 	})
 	@ApiOperation({ summary: 'Get all locations' })
 	@Get()

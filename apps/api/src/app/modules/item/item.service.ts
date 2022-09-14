@@ -3,14 +3,16 @@ import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Item } from './entities/item.entity';
 import { CreateItemDTO, UpdateItemDTO } from './dtos/item.dto';
-import { ItemType } from '../type/entities/item-type.entity';
+import { ItemType } from '../item-type/entities/item-type.entity';
+import { ItemLocation } from '../item-location/entities/item-location.entity';
+
 // import { ItemLocation } from '../location/entities/item-location.entity';
 
 @Injectable()
-export class InventorySystemService {
+export class ItemService {
 	constructor(
 		@InjectRepository(Item) private repository: Repository<Item>,
-		// @InjectRepository(ItemLocation) private locationRepository: Repository<ItemLocation>,
+		@InjectRepository(ItemLocation) private itemLocationRepository: Repository<ItemLocation>,
 		@InjectRepository(ItemType) private typeRepository: Repository<ItemType>
 	) { }
 
@@ -19,11 +21,13 @@ export class InventorySystemService {
 		return await this.repository.save(inventorySystem);
 	}
 
-	async update(id: number, updateInventorySystemDTO: UpdateItemDTO, typeId: number) {
+	async update(id: number, updateInventorySystemDTO: UpdateItemDTO, itemTypeId: number, itemLocationIds: number) {
 		const inventorySystem = await this.repository.findOneBy({ id })
 		if (!inventorySystem) throw new NotFoundException()
-		const type = await this.typeRepository.findOneBy({ id: typeId });
-		inventorySystem.type = type;
+		const itemType = await this.typeRepository.findOneBy({ id: itemTypeId });
+		inventorySystem.itemType = itemType;
+		const ItemLocations = await this.itemLocationRepository.find({ [id]: itemLocationIds });
+		inventorySystem.itemLocations = ItemLocations;
 		const newInventotySystem = this.repository.merge(inventorySystem, updateInventorySystemDTO)
 		return await this.repository.save(newInventotySystem);
 	}
@@ -50,4 +54,3 @@ export class InventorySystemService {
 	// 	return await this.repository.save(inventorySystem);
 	// }
 }
-

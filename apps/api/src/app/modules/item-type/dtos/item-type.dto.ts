@@ -1,7 +1,7 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { IsBoolean, IsNumber, IsOptional } from "class-validator";
 
-export class TypeDTO {
+export class ItemTypeDTO {
 
 	@ApiProperty()
 	id: number;
@@ -28,7 +28,7 @@ export class TypeDTO {
 	stock: boolean;
 }
 
-export class CreateTypeDTO {
+export class CreateItemTypeDTO {
 
 	@ApiProperty()
 	@IsBoolean()
@@ -66,7 +66,7 @@ export class CreateTypeDTO {
 	stock: boolean;
 }
 
-export class UpdateTypeDTO {
+export class UpdateItemTypeDTO {
 
 	@ApiProperty()
 	@IsNumber()

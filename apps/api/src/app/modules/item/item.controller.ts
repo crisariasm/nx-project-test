@@ -1,12 +1,12 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
 import { ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { CreateItemDTO, ItemDTO, UpdateItemDTO } from './dtos/item.dto';
-import { InventorySystemService } from './item.service';
+import { ItemService } from './item.service';
 
 @ApiTags('Item')
-@Controller('inventory-system')
-export class InventorySystemController {
-	constructor(private readonly inventorySystemService: InventorySystemService) { }
+@Controller('item')
+export class ItemController {
+	constructor(private readonly inventorySystemService: ItemService) { }
 
 	@ApiOkResponse({
 		type: ItemDTO,
@@ -24,10 +24,11 @@ export class InventorySystemController {
 	@Patch(':id/:typeId')
 	update(
 		@Param('id') id: number,
-		@Param('typeId') typeId: number,
+		@Param('itemTypeId') itemTypeId: number,
+		@Param('itemLocationIds') itemLocationIds: number,
 		@Body() updateItemDTO: UpdateItemDTO
 	) {
-		return this.inventorySystemService.update(id, updateItemDTO, typeId);
+		return this.inventorySystemService.update(id, updateItemDTO, itemTypeId, itemLocationIds);
 	}
 
 	@ApiOkResponse({

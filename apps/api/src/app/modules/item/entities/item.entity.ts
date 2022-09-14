@@ -1,6 +1,7 @@
 import { Column, Entity, ManyToOne, ManyToMany, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, JoinTable, JoinColumn } from 'typeorm';
-import { ItemLocation } from '../../location/entities/item-location.entity';
-import { ItemType } from '../../type/entities/item-type.entity';
+import { ItemLocation } from '../../item-location/entities/item-location.entity';
+import { ItemType } from '../../item-type/entities/item-type.entity';
+
 
 @Entity()
 export class Item {
@@ -8,8 +9,8 @@ export class Item {
 	@PrimaryGeneratedColumn()
 	id : number;
 
-	@Column()
-	codigo: string;
+	@Column({ nullable: true })
+	code: string;
 
 	@Column()
 	name : string;
@@ -21,10 +22,10 @@ export class Item {
 	description : string;
 
 	@Column()
-	cantidad : number;
+	amount : number;
 
 	@Column()
-	valor : number;
+	price : number;
 
 	@CreateDateColumn()
 	date: Date;
@@ -42,9 +43,9 @@ export class Item {
 			name: 'location_id',
 		}
 	})
-	locations: ItemLocation[];
+	itemLocations: ItemLocation[];
 
 	@ManyToOne(() => ItemType, (type) => type.inventorySystems)
 	@JoinColumn({ name: 'type_id' })
-	type: ItemType;
+	itemType: ItemType;
 }

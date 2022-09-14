@@ -1,8 +1,7 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { IsDateString, IsNumber, IsString } from "class-validator";
-import { LocationDTO } from "../../location/dtos/item-location.dto";
-import { TypeDTO } from "../../type/dtos/item-type.dto";
-
+import { ItemLocationDTO } from "../../item-location/dtos/item-location.dto";
+import { ItemTypeDTO } from "../../item-type/dtos/item-type.dto";
 
 export class ItemDTO {
 	
@@ -10,7 +9,7 @@ export class ItemDTO {
 	id : number;
 
 	@ApiProperty()
-	codigo: string;
+	code: string;
 
 	@ApiProperty()
 	name : string;
@@ -22,27 +21,27 @@ export class ItemDTO {
 	description : string;
 
 	@ApiProperty()
-	cantidad : number;
+	amount : number;
 
 	@ApiProperty()
-	valor : number;
+	price : number;
 
 	@ApiProperty()
 	date: Date;
 
 	//RELATIONS
-	@ApiProperty({ type: [LocationDTO] })
-	locations: LocationDTO[];
+	@ApiProperty({ type: [ItemLocationDTO] })
+	locations: ItemLocationDTO[];
 
-	@ApiProperty({ type: TypeDTO })
-	type: TypeDTO;
+	@ApiProperty({ type: ItemTypeDTO })
+	type: ItemTypeDTO;
 }
 
 export class CreateItemDTO {
 
 	@ApiProperty()
 	@IsString()
-	codigo: string;
+	code: string;
 
 	@ApiProperty()
 	@IsString()
@@ -58,11 +57,11 @@ export class CreateItemDTO {
 
 	@ApiProperty()
 	@IsNumber()
-	cantidad : number;
+	amount : number;
 
 	@ApiProperty()
 	@IsNumber()
-	valor : number;
+	price : number;
 
 	@ApiProperty()
 	@IsDateString()
@@ -77,7 +76,7 @@ export class UpdateItemDTO {
 
 	@ApiProperty()
 	@IsString()
-	codigo: string;
+	code: string;
 
 	@ApiProperty()
 	@IsString()
@@ -93,11 +92,11 @@ export class UpdateItemDTO {
 
 	@ApiProperty()
 	@IsNumber()
-	cantidad : number;
+	amount : number;
 
 	@ApiProperty()
 	@IsNumber()
-	valor : number;
+	price : number;
 
 	@ApiProperty()
 	@IsDateString()
@@ -108,5 +107,6 @@ export class UpdateItemDTO {
 	itemTypeId : number;
 
 	@ApiProperty()
+	@IsNumber({},{each: true})
 	itemLocationIds : [number];
 }
