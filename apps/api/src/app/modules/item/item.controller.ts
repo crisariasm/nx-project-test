@@ -21,7 +21,7 @@ export class ItemController {
 		type: ItemDTO,
 	})
 	@ApiOperation({ summary: 'Update Item' })
-	@Patch(':id/:typeId')
+	@Patch(':id/:typeId/:itemLocationIds')
 	update(
 		@Param('id') id: number,
 		@Param('itemTypeId') itemTypeId: number,
