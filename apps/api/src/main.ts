@@ -21,8 +21,9 @@ async function bootstrap() {
 		}
 	);
 	
+	const PORT = 5000;
 	const configService = app.get(ConfigService);
-	const port = configService.get<number>('API_PORT') || 3333;
+	const port = configService.get<number>('API_PORT') || PORT;
 	const prefix = configService.get<string>('API_PREFIX') ?? 'api';
 	const reflector = app.get(Reflector);
 	const options = new DocumentBuilder()
