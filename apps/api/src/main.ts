@@ -50,7 +50,7 @@ async function bootstrap() {
   await app.listen(port);
 
   Logger.log(
-    `🚀 Application is running on: https://nx-project-test-production.up.railway.app/`
+    `🚀 Application is running on: http://localhost:${port}/${prefix}`
   );
   Logger.log(
 		`👁️  Swagger at http://localhost:${port}/api/documentation`
