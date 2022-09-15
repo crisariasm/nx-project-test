@@ -5,9 +5,10 @@ import { Item } from './entities/item.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ItemType } from '../item-type/entities/item-type.entity';
 import { ItemLocation } from '../item-location/entities/item-location.entity';
+import { SharedModule } from '../../shared/shared.module';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Item, ItemType, ItemLocation])], 
+  imports: [SharedModule], 
   providers: [ItemService],
   controllers: [ItemController]
 })
