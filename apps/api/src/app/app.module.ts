@@ -8,10 +8,11 @@ import { ItemModule } from './modules/item/item.module';
 import { ItemLocationModule } from './modules/item-location/item-location.module';
 import { ItemTypeModule } from './modules/item-type/item-type.module';
 import { UploadFilesModule } from './modules/upload-files/upload-files.module';
+import { ExcelModule } from './modules/excel/excel.module';
 
 
 @Module({
-  imports: [ConfigModule, ItemModule, ItemLocationModule, ItemTypeModule, UploadFilesModule,
+  imports: [ConfigModule, ItemModule, ItemLocationModule, ItemTypeModule, UploadFilesModule, ExcelModule,
   TypeOrmModule.forRoot({
     ...config,
     autoLoadEntities: true
