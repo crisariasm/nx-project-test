@@ -7,14 +7,20 @@ import { config }  from 'dataSource'
 import { ItemModule } from './modules/item/item.module';
 import { ItemLocationModule } from './modules/item-location/item-location.module';
 import { ItemTypeModule } from './modules/item-type/item-type.module';
+import { GatewayModule } from './modules/websocket/gateway.module';
 
 
 @Module({
-  imports: [ConfigModule, ItemModule, ItemLocationModule, ItemTypeModule,
+  imports: [
   TypeOrmModule.forRoot({
     ...config,
     autoLoadEntities: true
-  })
+  }),
+  ConfigModule, 
+  ItemModule, 
+  ItemLocationModule, 
+  ItemTypeModule, 
+  GatewayModule
   ],
   controllers: [AppController],
   providers: [AppService],
